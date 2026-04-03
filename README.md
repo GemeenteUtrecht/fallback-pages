@@ -19,9 +19,10 @@ Het doel van deze repository is om een centrale plek te bieden voor fallbackpagi
 De repository bevat momenteel:
 
 - `index.html` – overzichtspagina / root landing page
-- `sp-www-index.html` – fallbackpagina voor de website
-- `sp-loket-index.html` – fallbackpagina voor het digitaal loket
+- `webiste/index.html` – fallbackpagina voor de website
+- `loket/index.html` – fallbackpagina voor het digitaal loket
 - `README.md` – toelichting op doel, inhoud en gebruik
+-  [WIP] `signalen/index.html` – fallbackpagina voor het digitaal loket
 
 ## Gebruik
 
