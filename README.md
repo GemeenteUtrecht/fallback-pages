@@ -4,6 +4,8 @@ Deze repository bevat statische fallbackpagina’s voor de website en het digita
 
 De pagina’s worden gebruikt wanneer de reguliere dienstverlening tijdelijk niet beschikbaar is, bijvoorbeeld door een storing, onderhoud of uitval van onderliggende systemen. In zo’n situatie kan via een router, hub of andere fallback-locatie een eenvoudige statische HTML-pagina worden getoond aan bezoekers.
 
+Wil je weten hoe dit er uit ziet? Kijk dan naar de [front-end weergave](https://gemeenteutrecht.github.io/fallback-pages/).
+
 ## Doel
 
 Het doel van deze repository is om een centrale plek te bieden voor fallbackpagina’s die:
