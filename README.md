@@ -54,9 +54,37 @@ De fallbackpagina’s in deze repository zijn:
 - toegankelijk en duidelijk geschreven
 - onafhankelijk van backend-systemen
 
+## Versiebeheering
+
+Dit project implementeert een volledig versiebeheersysteem via:
+
+- **Meta Tags in HTML** – Elke pagina bevat versie- en datuminformatie in `<meta>`-tags
+- **Semantic Versioning** – MAJOR.MINOR.PATCH format (bijv. 1.0.0)
+- **CHANGELOG.md** – Centraal register van alle wijzigingen
+- **GitHub Releases** – Opensbare release-geschiedenis met download links
+- **GitHub Actions** – Automatische versie-update bij het maken van tags
+
+### Huidige versie controleren
+
+Open pagina bron en zoek naar:
+```html
+<meta name="version" content="1.0.0" />
+<meta name="version-date" content="2026-04-10" />
+```
+
+Zie [VERSION-QUICK-REFERENCE.nl.md](./VERSION-QUICK-REFERENCE.nl.md) voor snelle instructies.
+
+### Versie Releases
+
+- Alle beschikbare versies op: [GitHub Releases](../../releases)
+- Gedetailleerde changelog: [CHANGELOG.md](./CHANGELOG.md)
+- Volledige versioning gids: [VERSIONING.md](./VERSIONING.md)
+
 ## Beheer
 
 Aanpassingen aan teksten, contactgegevens of styling kunnen in deze repository worden bijgehouden, zodat altijd een actuele versie beschikbaar is voor inzet bij incidenten of onderhoud.
+
+Nieuwe versies worden gemaakt via Git tags en GitHub Releases, waarbij alle pagina's automatisch worden voorzien van actuele versiegegevens.
 
 ## Opmerking
 

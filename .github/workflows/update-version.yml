@@ -1,0 +1,63 @@
+name: Update Version on Release
+
+on:
+  release:
+    types: [created, published]
+
+jobs:
+  update-versions:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Extract version from tag
+        id: get_version
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "date=$(date -u +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Update version tags in HTML files
+        run: |
+          VERSION=${{ steps.get_version.outputs.version }}
+          DATE=${{ steps.get_version.outputs.date }}
+          
+          # Update website/index.html
+          sed -i "s/<meta name=\"version\" content=\"[^\"]*\" \/>/<meta name=\"version\" content=\"$VERSION\" \/>/" website/index.html
+          sed -i "s/<meta name=\"version-date\" content=\"[^\"]*\" \/>/<meta name=\"version-date\" content=\"$DATE\" \/>/" website/index.html
+          sed -i "s/<!-- Fallback page: website | Version [^ ]* |/<!-- Fallback page: website | Version $VERSION |/" website/index.html
+          sed -i "s/Version [^ ]* | [0-9-]* -->$/Version $VERSION | $DATE -->/" website/index.html
+          
+          # Update loket/index.html
+          sed -i "s/<meta name=\"version\" content=\"[^\"]*\" \/>/<meta name=\"version\" content=\"$VERSION\" \/>/" loket/index.html
+          sed -i "s/<meta name=\"version-date\" content=\"[^\"]*\" \/>/<meta name=\"version-date\" content=\"$DATE\" \/>/" loket/index.html
+          sed -i "s/<!-- Fallback page: loket | Version [^ ]* |/<!-- Fallback page: loket | Version $VERSION |/" loket/index.html
+          
+          # Update signalen/index.html
+          sed -i "s/<meta name=\"version\" content=\"[^\"]*\" \/>/<meta name=\"version\" content=\"$VERSION\" \/>/" signalen/index.html
+          sed -i "s/<meta name=\"version-date\" content=\"[^\"]*\" \/>/<meta name=\"version-date\" content=\"$DATE\" \/>/" signalen/index.html
+          sed -i "s/<!-- Fallback page: signalen | Version [^ ]* |/<!-- Fallback page: signalen | Version $VERSION |/" signalen/index.html
+          
+          # Update root index.html
+          sed -i "s/<meta name=\"version\" content=\"[^\"]*\" \/>/<meta name=\"version\" content=\"$VERSION\" \/>/" index.html
+          sed -i "s/<meta name=\"version-date\" content=\"[^\"]*\" \/>/<meta name=\"version-date\" content=\"$DATE\" \/>/" index.html
+          sed -i "s/<!-- Fallback pages: root | Version [^ ]* |/<!-- Fallback pages: root | Version $VERSION |/" index.html
+
+      - name: Commit version updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: update version tags to ${{ steps.get_version.outputs.version }}" || true
+          git push
+
+      - name: Create release notes comment
+        run: |
+          echo "✅ Version ${{ steps.get_version.outputs.version }} has been applied to all fallback pages"
+          echo "📅 Date: ${{ steps.get_version.outputs.date }}"
