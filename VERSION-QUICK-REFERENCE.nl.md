@@ -1,6 +1,6 @@
 # Quick Reference - Versie Controleren
 
-## 🚀 Snelle Gids voor Leveranciers
+## 🚀 Snelle guide voor Leveranciers
 
 ### Hoe controleer ik welke versie er draait?
 
@@ -92,9 +92,12 @@ Open `CHANGELOG.md` in repository om alle wijzigingen per versie te zien:
 
 | Bestand | Doel |
 |---------|------|
-| `website/index.html` | Fallback voor website |
-| `loket/index.html` | Fallback voor online loket |
-| `signalen/index.html` | Fallback voor Signalen app |
+| `website/index.html` | Fallback voor website (storing) |
+| `website/onderhoud/index.html` | Fallback voor website (gepland onderhoud) |
+| `loket/index.html` | Fallback voor online loket (storing) |
+| `loket/onderhoud/index.html` | Fallback voor online loket (gepland onderhoud) |
+| `signalen/index.html` | Fallback voor Signalen app (storing) |
+| `signalen/onderhoud/index.html` | Fallback voor Signalen app (gepland onderhoud) |
 | `index.html` | Root redirect pagina |
 | `CHANGELOG.md` | Volledige wijzigingenshistorie |
 | `VERSIONING.md` | Gedetailleerde versioning documentatie |

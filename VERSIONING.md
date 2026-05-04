@@ -31,10 +31,15 @@ Elke HTML-pagina bevat versie-informatie in de `<head>` sectie:
 - Eenvoudig uit te lezen voor monitors/dashboards
 
 ### Locaties
-- `website/index.html` - Fallback voor website
-- `loket/index.html` - Fallback voor online loket
-- `signalen/index.html` - Fallback voor Signalen
+- `website/index.html` - Fallback voor website (storing)
+- `website/onderhoud/index.html` - Fallback voor website (gepland onderhoud)
+- `loket/index.html` - Fallback voor online loket (storing)
+- `loket/onderhoud/index.html` - Fallback voor online loket (gepland onderhoud)
+- `signalen/index.html` - Fallback voor Signalen (storing)
+- `signalen/onderhoud/index.html` - Fallback voor Signalen (gepland onderhoud)
 - `index.html` (root) - Root redirect pagina
+
+> Per fallback-doel delen de storing- en onderhoudsvariant dezelfde versie. Eén release dekt beide varianten.
 
 ---
 

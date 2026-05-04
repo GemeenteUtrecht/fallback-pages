@@ -21,10 +21,15 @@ Het doel van deze repository is om een centrale plek te bieden voor fallbackpagi
 De repository bevat momenteel:
 
 - `index.html` – overzichtspagina / root landing page
-- `website/index.html` – fallbackpagina voor de website
-- `loket/index.html` – fallbackpagina voor het digitaal loket
+- `website/index.html` – fallbackpagina voor de website (storing)
+- `website/onderhoud/index.html` – fallbackpagina voor de website (gepland onderhoud)
+- `loket/index.html` – fallbackpagina voor het digitaal loket (storing)
+- `loket/onderhoud/index.html` – fallbackpagina voor het digitaal loket (gepland onderhoud)
+- `signalen/index.html` – fallbackpagina voor Signalen (storing)
+- `signalen/onderhoud/index.html` – fallbackpagina voor Signalen (gepland onderhoud)
 - `README.md` – toelichting op doel, inhoud en gebruik
--  [WIP] `signalen/index.html` – fallbackpagina voor het digitaal loket
+
+Per fallback-doel zijn er dus twee varianten: een **storing**-variant (onverwachte uitval) en een **onderhoud**-variant (gepland onderhoud, met een verwachte hersteltijd).
 
 ## Gebruik
 
@@ -37,6 +42,33 @@ De pagina kan bezoekers onder andere informeren over:
 - wat eventueel nog wel werkt
 - alternatieve contactmogelijkheden
 - het advies om het later opnieuw te proberen
+
+## Gepland onderhoud
+
+Naast de standaard storingspagina's bevat elke fallback-map een `onderhoud/index.html`. Deze variant wordt ingezet bij **gepland onderhoud**, wanneer vooraf bekend is wanneer de dienst weer beschikbaar is.
+
+### Wanneer welke variant inzetten?
+
+| Situatie | Pad |
+|---|---|
+| Onverwachte storing, hersteltijd onbekend | `website/index.html`, `loket/index.html`, `signalen/index.html` |
+| Gepland onderhoud, hersteltijd bekend | `website/onderhoud/index.html`, `loket/onderhoud/index.html`, `signalen/onderhoud/index.html` |
+
+De fallback-router/hub schakelt om door eenvoudig naar het andere pad te wijzen.
+
+### Hersteltijd invullen vóór deploy
+
+Elke onderhoudspagina bevat een `<time>`-element met een placeholder. Vul deze altijd in vóór deploy — anders ziet de bezoeker letterlijk `[VUL TIJD IN]` op de pagina staan (bewust zichtbaar zodat de stap niet vergeten wordt).
+
+Zoek in de HTML naar de markering `BEHEERDER:` en pas twee dingen aan:
+
+```html
+<!-- BEHEERDER: pas datetime en de zichtbare tijd aan vóór deploy. Zie README.md → "Gepland onderhoud". -->
+Wij verwachten dat de website het <time datetime="2026-05-04T18:00">[VUL TIJD IN]</time> weer doet.
+```
+
+1. **`datetime`-attribuut** – ISO 8601 formaat (`YYYY-MM-DDTHH:MM`), voor screenreaders en machines.
+2. **Zichtbare tekst tussen `<time>...</time>`** – natuurlijke Nederlandse tekst voor de bezoeker, bijvoorbeeld `vandaag om 18:00` of `morgenochtend om 09:00`.
 
 ## GitHub Pages / preview
 
