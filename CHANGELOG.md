@@ -5,6 +5,12 @@ Alle opmerkelijke wijzigingen aan de Fallback Pages worden in dit bestand bijgeh
 Dit bestand volgt het format van [Keep a Changelog](https://keepachangelog.com/nl-NL/1.0.0/)
 en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 
+## [Unreleased]
+
+### Toegevoegd
+- `server/index.html`: storingspagina voor serveruitval met uitsluitend telefonisch contact
+- Link naar de serverstoringspagina op de overzichtspagina
+
 ## [1.2.0] - 2026-05-04
 
 ### Toegevoegd

@@ -21,6 +21,7 @@ Het doel van deze repository is om een centrale plek te bieden voor fallbackpagi
 De repository bevat momenteel:
 
 - `index.html` – overzichtspagina / root landing page
+- `server/index.html` – fallbackpagina bij een serverstoring (alleen telefonisch contact)
 - `website/index.html` – fallbackpagina voor de website (storing)
 - `website/onderhoud/index.html` – fallbackpagina voor de website (gepland onderhoud)
 - `loket/index.html` – fallbackpagina voor het digitaal loket (storing)
