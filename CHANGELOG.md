@@ -8,7 +8,7 @@ en dit project volgt [Semantic Versioning](https://semver.org/lang/nl/).
 ## [Unreleased]
 
 ### Toegevoegd
-- `server/index.html`: storingspagina voor serveruitval met uitsluitend telefonisch contact
+- `server/index.html`: storingspagina voor serveruitval met een link naar het bereikbare online loket en telefonisch contact
 - Link naar de serverstoringspagina op de overzichtspagina
 
 ## [1.2.0] - 2026-05-04
